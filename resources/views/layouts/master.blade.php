@@ -5,12 +5,8 @@
 </head>
 <body>
 <header>
-    <nav>
-        <div class="title">سیستم مدیریت تسک ها</div>
-        <ul>
-            <li><a href="/">خانه</a></li>
-        </ul>
-    </nav>
+    {{--components/navbar --}}
+    <x-navbar/>
 </header>
 
 <main class="container">
