@@ -2,6 +2,11 @@
     <div class="alert-danger">
         {{ session('message') }}
     </div>
+
+@elseif(session()->has('success'))
+    <div class="alert-success">
+        {{ session('success') }}
+    </div>
 @endif
 
 @if ($errors->any())
