@@ -2,7 +2,7 @@
 
 return [
     'required' => ':attribute نباید خالی باشد.',
-    'exists' => ':attribute انتخاب شده در سیستم وجود ندارد.',
+    'exists' => ' کاربری با این مشخصات یافت نشد.',
     'unique' => ':attribute قبلاً ثبت شده است.',
     'email' => 'فرمت :attribute صحیح نیست.',
     'min' => [
