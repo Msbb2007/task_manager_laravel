@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\userLoginRequest;
+use App\Http\Requests\userRegisterRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,19 +30,20 @@ class AuthController extends Controller
 
     public function showRegister()
     {
-        return view('');
+        return view('auth.register');
 
     }
 
-    public function register(userLoginRequest $request)
+    public function register(userRegisterRequest $request)
     {
         $user = User::query()->create([
-            'name'     => $request->name,
-            'email'    => $request->email,
+            'name' => $request->name,
+            'family' => $request->family,
+            'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('')->with('success', 'ثبت‌ نام با موفقیت انجام شد.');
+        return redirect()->route('login')->with('success', 'ثبت‌ نام با موفقیت انجام شد.اکنون وارد شوید');
     }
 
     public function logout(Request $request){
