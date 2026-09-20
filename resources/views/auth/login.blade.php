@@ -27,7 +27,7 @@
             </form>
 
             <p class="auth-footer-text">
-                حساب کاربری ندارید؟ <a href="{{ route('register') }}">ثبت‌نام کن</a>
+                حساب کاربری ندارید؟ <a href="{{ route('register') }}">ثبت‌نام کنید</a>
             </p>
         </div>
     </div>
