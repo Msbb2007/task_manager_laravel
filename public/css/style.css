@@ -1,12 +1,18 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Vazirmatn', sans-serif;
+}
+
 body {
-    font-family: Tahoma, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
 }
 
 header {
-    background: #454343;
+    background: #2b2392;
     color: #fff;
     padding: 1rem 0;
 }
@@ -15,7 +21,7 @@ header {
     width: 80%;
     margin: 20px auto;
     padding: 20px;
-    background: white;
+    background: #e3e2ff;
     border-radius: 8px;
 }
 
@@ -23,6 +29,15 @@ nav ul {
     list-style: none;
     display: flex;
     gap: 15px;
+    margin: 5px;
+    font-size: 20px;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 23px;
 }
 
 nav a {
@@ -30,11 +45,6 @@ nav a {
     text-decoration: none;
 }
 
-.title{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 /* استایل‌های صفحه احراز هویت (Auth) */
 .auth-container {
@@ -110,8 +120,32 @@ nav a {
     font-size: 14px;
 }
 
+.alert-success {
+    background-color: #ccf6ce;
+    color: #39b80d;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
 .alert-danger ul {
     margin: 0;
     padding-right: 20px;
 }
 
+.auth-footer-text {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.auth-footer-text a {
+    color: #4f46e5;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.auth-footer-text a:hover {
+    text-decoration: underline;
+}
