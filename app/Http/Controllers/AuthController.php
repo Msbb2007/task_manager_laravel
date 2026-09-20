@@ -13,7 +13,7 @@ class AuthController extends Controller
 
     public function showLogin()
     {
-        return view('');
+        return view('auth.login');
     }
 
     public function login(userLoginRequest $request){
@@ -23,7 +23,7 @@ class AuthController extends Controller
             Auth::login($user);
             return redirect()->intended('');
         }
-        return redirect()->back()->with('message','ایمیل یا رمز عبور نادرست است');
+        return redirect()->back()->with('message','رمز عبور یا ایمیل نادرست می باشد');
     }
 
 
