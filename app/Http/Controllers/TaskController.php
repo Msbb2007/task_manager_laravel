@@ -11,28 +11,28 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks=Task::query()->paginate(6);
-        return view('',compact('tasks'));
+        $tasks = Task::with('category')->latest()->paginate(6);
+        return view('admin.tasks.index',compact('tasks'));
     }
 
     public function create(Request $request)
     {
         $categories = Category::all();
-        return view('',compact('categories'));
+        return view('admin.tasks.create',compact('categories'));
     }
 
 
     public function store(taskRequest $request)
     {
         Task::query()->create([
-            'title'=>$request->name,
+            'title'=>$request->title,
             'description'=>$request->description,
             'status'=>$request->status,
             'category_id'=>$request->category_id,
             'priority'=>$request->priority,
             'due_date' =>$request->due_date,
         ]);
-        return redirect()->route('')->with('success', 'تسک با موفقیت ساخته شد');
+        return redirect()->route('admin.tasks')->with('success', 'تسک با موفقیت ساخته شد');
     }
 
     public function show(Task $task)
@@ -43,13 +43,13 @@ class TaskController extends Controller
     public function edit(Task $task)
     {
         $categories = Category::all();
-        return view('', compact('task','categories'));
+        return view('admin.tasks.edit', compact('task','categories'));
     }
 
-    public function update(Request $request, Task $task)
+    public function update(taskRequest $request, Task $task)
     {
         $task->update([
-            'title'       => $request->name,
+            'title'       => $request->title,
             'description' => $request->description,
             'status'      => $request->status,
             'category_id' => $request->category_id,
@@ -57,12 +57,12 @@ class TaskController extends Controller
             'due_date'    => $request->due_date,
         ]);
 
-        return redirect()->route('')->with('success', 'تسک با موفقیت به‌روزرسانی شد');
+        return redirect()->route('admin.tasks')->with('success', 'تسک با موفقیت به‌روزرسانی شد');
     }
 
     public function destroy(Task $task)
     {
         $task->delete();
-        return redirect()->route('')->with('success', 'تسک با موفقیت حذف شد');
+        return redirect()->route('admin.tasks')->with('success', 'تسک با موفقیت حذف شد');
     }
 }
