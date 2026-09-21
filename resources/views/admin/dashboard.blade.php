@@ -11,11 +11,11 @@
     <!-- بخش کارت‌های آماری با استفاده از کامپوننت -->
     <div class="stats-grid">
         <x-card title="تسک‌های فعال" value="">
-            <span style="color: var(--admin-success);">+۱۲ از دیروز</span>
+            <span style="color: var(--admin-success);"></span>
         </x-card>
 
         <x-card title="کاربران جدید" value="">
-            <span style="color: var(--admin-success);">+۵ از دیروز</span>
+            <span style="color: var(--admin-success);"></span>
         </x-card>
 
         <x-card title="تسک‌های تکمیل شده" value="">
