@@ -1,0 +1,72 @@
+/* استایل کارت فرم دسته‌بندی‌ها */
+.category-card {
+    background: #ffffff;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.category-card-header {
+    background: linear-gradient(45deg, #4e73df, #224abe);
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+.category-card-body {
+    padding: 30px;
+}
+
+/* استایل اینپوت‌ها */
+.form-control {
+    border-radius: 8px;
+    padding: 10px 15px;
+    border: 1px solid #e3e6f0;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #4e73df;
+    box-shadow: 0 0 0 0.2rem rgba(78, 115, 223, 0.1);
+}
+
+/* استایل دکمه‌ها */
+.btn-save {
+    background-color: #1cc88a;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: transform 0.2s;
+}
+
+.btn-save:hover {
+    background-color: #17a673;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-update {
+    background-color: #4e73df;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.btn-update:hover {
+    background-color: #2e59d9;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* استایل رنگ انتخابگر */
+.form-control-color {
+    width: 60px;
+    padding: 5px;
+    cursor: pointer;
+}
