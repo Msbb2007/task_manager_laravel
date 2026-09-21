@@ -11,7 +11,7 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::query()->paginate(10);
+        $categories = Category::query()->withCount('tasks')->paginate(10);
         return view('admin.categories.index', compact('categories'));
     }
 
