@@ -1,0 +1,81 @@
+/* public/css/admin/dashboard.css */
+
+:root {
+    --admin-primary: #2c3e50;
+    --admin-accent: #3498db;
+    --admin-success: #27ae60;
+    --admin-bg: #f4f7f6;
+    --white: #ffffff;
+}
+
+body {
+    background-color: var(--admin-bg);
+    font-family: 'Vazirmatn', sans-serif;
+    margin: 0;
+}
+
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Style */
+.sidebar {
+    width: 260px;
+    background-color: var(--admin-primary);
+    color: var(--white);
+    padding: 20px;
+}
+
+.sidebar .nav-link {
+    display: block;
+    color: #bdc3c7;
+    padding: 12px 15px;
+    text-decoration: none;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    transition: 0.3s;
+}
+
+.sidebar .nav-link:hover, .sidebar .nav-link.active {
+    background-color: var(--admin-accent);
+    color: var(--white);
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 30px;
+}
+
+/* Stats Cards Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+/* Card Component Style */
+.stat-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    border-right: 5px solid var(--admin-accent);
+}
+
+.stat-card h3 {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+.stat-card .value {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--admin-primary);
+    margin-top: 10px;
+}
