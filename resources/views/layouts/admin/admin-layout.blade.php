@@ -17,16 +17,37 @@
     <aside class="sidebar">
         <h2>پنل مدیریت</h2>
         <nav>
-            <a href="{{route('admin.dashboard')}}" class="nav-link active">داشبورد</a>
-            <a href="{{route('admin.tasks')}}" class="nav-link">مدیریت تسک‌ها</a>
-            <a href="{{route('admin.categories')}}" class="nav-link">دسته بندی ها</a>
-            <a href="" class="nav-link">انتصاب تسک</a>
+            <a href="{{ route('admin.dashboard') }}"
+               class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                داشبورد
+            </a>
+            <a href="{{ route('admin.tasks') }}"
+               class="nav-link {{ request()->routeIs('admin.tasks') ? 'active' : '' }}">
+                مدیریت تسک ها
+            </a>
+            <a href="{{ route('admin.categories') }}"
+               class="nav-link {{ request()->routeIs('admin.categories') ? 'active' : '' }}">
+                دسته بندی ها
+            </a>
+            {{-- فعلا ادرس غلط می دهیم بعدا اضافه کنیم--}}
+            <a href="{{ route('admin.dashboard') }}"
+               class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                انتصاب تسک ها
+            </a>
 
             {{-- سایدبار اختصاصی ادمین اصلی (Admin) با استفاده از Gate --}}
             @can('access-admin-panel')
                 <div style="margin-top: 20px; font-size: 0.8rem; color: #7f8c8d;">مدیریت سیستم</div>
-                <a href="" class="nav-link">مدیریت کاربران</a>
-                <a href="" class="nav-link">ساخت کاربر جدید</a>
+                {{-- فعلا ادرس غلط می دهیم بعدا اضافه کنیم--}}
+                <a href="{{ route('admin.dashboard') }}"
+                   class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                    مدیریت کاربران
+                </a>
+                {{-- فعلا ادرس غلط می دهیم بعدا اضافه کنیم--}}
+                <a href="{{ route('admin.dashboard') }}"
+                   class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                    ساخت کاربر جدید
+                </a>
             @endcan
 
             <form action="{{ route('logout') }}" method="POST" class="logout-form">
