@@ -29,6 +29,7 @@ class UserController extends Controller
             'family' => $request->family,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => $request->role,
         ]);
         return redirect()->route('')->with('success', 'کاربر با موفقیت ساخته شد');
     }
