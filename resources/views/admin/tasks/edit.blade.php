@@ -58,9 +58,9 @@
                             <div class="form-group-custom">
                                 <label class="label-custom">وضعیت</label>
                                 <select name="status" class="select-custom @error('status') is-invalid @enderror">
-                                    <option value="todo" {{ old('status', $task->status) == 'pending' ? 'selected' : '' }}>در انتظار</option>
+                                    <option value="pending" {{ old('status', $task->status) == 'pending' ? 'selected' : '' }}>در انتظار</option>
                                     <option value="in_progress" {{ old('status', $task->status) == 'in_progress' ? 'selected' : '' }}>در حال انجام</option>
-                                    <option value="done" {{ old('status', $task->status) == 'completed' ? 'selected' : '' }}>انجام شده</option>
+                                    <option value="completed" {{ old('status', $task->status) == 'completed' ? 'selected' : '' }}>انجام شده</option>
                                 </select>
                                 @error('status') <span class="error-text">{{ $message }}</span > @enderror
                             </div>
