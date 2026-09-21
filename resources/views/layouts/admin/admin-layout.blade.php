@@ -26,9 +26,15 @@
                 <a href="" class="nav-link">دسته بندی ها</a>
             @endcan
 
-            <div style="margin-top: 20px; border-top: 1px solid #3e4f5f; padding-top: 10px;">
-                <a href="{{route('logout')}}" class="nav-link" style="color: #e74c3c;">خروج</a>
-            </div>
+            <form action="{{ route('logout') }}" method="POST" class="logout-form">
+                @csrf
+                <div class="logout-wrapper">
+                    <button type="submit" class="btn-logout">
+                        خروج از سیستم
+                    </button>
+                </div>
+            </form>
+
         </nav>
     </aside>
 

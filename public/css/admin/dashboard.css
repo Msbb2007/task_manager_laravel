@@ -79,3 +79,42 @@ body {
     color: var(--admin-primary);
     margin-top: 10px;
 }
+
+/*logout's Style*/
+.logout-form {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.logout-wrapper {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #3e4f5f;
+}
+
+.btn-logout {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #e74c3c;
+    padding: 10px 15px;
+    text-align: right;
+    font-family: 'Vazirmatn', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.btn-logout:hover {
+    background-color: rgba(231, 76, 60, 0.1);
+    color: #ff4d4d;
+    padding-right: 20px;
+}
+
+.btn-logout:active {
+    transform: scale(0.98);
+}
