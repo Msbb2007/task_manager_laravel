@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +23,22 @@ Route::middleware('auth')->prefix('/admin')->group(function(){
     Route::get('/dashboard',function (){
         return view('admin.dashboard');
     })->name('admin.dashboard');
+
+    //tasks
+    Route::get('/tasks',[TaskController::class,'index'])->name('admin.tasks');
+    Route::get('/tasks/create',[TaskController::class,'create'])->name('admin.tasks.create');
+    Route::post('/tasks/create',[TaskController::class,'store'])->name('admin.tasks.store');
+    Route::get('/tasks/{task}/edit',[TaskController::class,'edit'])->name('admin.tasks.edit');
+    Route::put('/tasks/{task}/edit',[TaskController::class,'update'])->name('admin.tasks.update');
+    Route::delete('/tasks/{task}/edit',[TaskController::class,'destroy'])->name('admin.tasks.destroy');
+
+    //categories
+    Route::get('categories',[CategoryController::class,'index'])->name('admin.categories');
+    Route::get('categories/create',[CategoryController::class,'create'])->name('admin.categories.create');
+    Route::post('categories/create',[CategoryController::class,'store'])->name('admin.categories.store');
+    Route::get('categories/{category}/edit',[CategoryController::class,'edit'])->name('admin.categories.edit');
+    Route::put('categories/{category}/edit',[CategoryController::class,'update'])->name('admin.categories.update');
+    Route::delete('categories/{category}/edit',[CategoryController::class,'destroy'])->name('admin.categories.destroy');
 
     //users
     Route::get('/users',[UserController::class,'index'])->name('admin.users');
