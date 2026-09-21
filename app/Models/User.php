@@ -18,11 +18,16 @@ class User extends Authenticatable
 
     use HasFactory, Notifiable, SoftDeletes;
 
+    const ROLE_USER = 'user';
+    const ROLE_EDITOR = 'editor';
+    const ROLE_ADMIN = 'admin';
+
     protected $fillable=[
         'name'
         ,'family'
         , 'email'
         , 'password'
+        ,'role'
     ];
 
     protected function casts(): array
@@ -31,6 +36,16 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role === self::ROLE_ADMIN;
+    }
+
+    public function isEditor(): bool
+    {
+        return in_array($this->role, [self::ROLE_EDITOR, self::ROLE_ADMIN]);
     }
 
     public function tasks ()
