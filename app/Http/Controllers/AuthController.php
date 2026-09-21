@@ -22,7 +22,12 @@ class AuthController extends Controller
         $user=User::query()->where('email',$request->email)->first();
         if(Hash::check($request->password,$user->password)){
             Auth::login($user);
-            return redirect()->intended('');
+            if($user->isEditor()){
+                return redirect()->route('admin.dashboard');
+            }
+            else{
+                return redirect()->route('');
+            }
         }
         return redirect()->back()->with('message','رمز عبور یا ایمیل نادرست می باشد');
     }
