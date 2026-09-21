@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\User;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -28,5 +29,7 @@ class AppServiceProvider extends ServiceProvider
         Gate::define('manage-tasks', function (User $user) {
             return in_array($user->role, [User::ROLE_ADMIN, User::ROLE_EDITOR]);
         });
+
+        Paginator::useBootstrap();
     }
 }
