@@ -1,0 +1,85 @@
+/* Task Management Specific Styles */
+
+/* استایل جدول تسک‌ها */
+.table-task {
+    border-collapse: separate;
+    border-spacing: 0 10px; /* ایجاد فاصله بین ردیف‌ها */
+}
+
+.table-task tbody tr {
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease;
+}
+
+.table-task tbody tr:hover {
+    transform: scale(1.01);
+    background-color: #f8f9fa;
+}
+
+.table-task td {
+    vertical-align: middle;
+    padding: 15px;
+    border: none;
+}
+
+.table-task td:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.table-task td:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+/* استایل نشانگر اولویت (Priority Badges) */
+.priority-low {
+    color: #27ae60;
+    background: rgba(39, 174, 96, 0.1);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.priority-medium {
+    color: #f39c12;
+    background: rgba(243, 156, 18, 0.1);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.priority-high {
+    color: #e74c3c;
+    background: rgba(231, 76, 60, 0.1);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+/* استایل فرم‌ها */
+.task-form-card {
+    border-radius: 15px;
+    border: none;
+}
+
+.form-control:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+.invalid-feedback {
+    font-size: 0.8rem;
+    font-family: 'Vazirmatn', sans-serif;
+}
+
+/* استایل دکمه‌ها در فرم */
+.btn-save {
+    padding: 10px 30px;
+    border-radius: 8px;
+    font-weight: bold;
+}
