@@ -33,7 +33,11 @@
                         @foreach($tasks as $task)
                             <tr>
                                 <td>{{ $task->title }}</td>
-                                <td><span class="badge bg-info">{{ $task->category->name }}</span></td>
+                                <td>
+                                    <span class="badge" style="background-color: {{ $task->category->color ?? '#6c757d' }};">
+                                          {{ $task->category->name }}
+                                    </span>
+                                </td>
                                 <td>
                                     <span class="priority-{{ $task->priority }}">
                                         {{ $task->priority }}
