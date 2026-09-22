@@ -29,24 +29,30 @@
                class="nav-link {{ request()->routeIs('admin.categories') ? 'active' : '' }}">
                 دسته بندی ها
             </a>
-            {{-- فعلا ادرس غلط می دهیم بعدا اضافه کنیم--}}
-            <a href="{{ route('admin.dashboard') }}"
-               class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+            <a href="{{ route('admin.task_user') }}"
+               class="nav-link {{ request()->routeIs('admin.task_user') ? 'active' : '' }}">
                 انتصاب تسک ها
+            </a>
+
+            <a href="{{ route('admin.users.editProfile',auth()->user()->id) }}"
+               class="nav-link {{ request()->routeIs('admin.users.editProfile') ? 'active' : '' }}">
+                ویرایش پروفایل
             </a>
 
             {{-- سایدبار اختصاصی ادمین اصلی (Admin) با استفاده از Gate --}}
             @can('access-admin-panel')
                 <div style="margin-top: 20px; font-size: 0.8rem; color: #7f8c8d;">مدیریت سیستم</div>
-                {{-- فعلا ادرس غلط می دهیم بعدا اضافه کنیم--}}
-                <a href="{{ route('admin.dashboard') }}"
-                   class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                <a href="{{ route('admin.users') }}"
+                   class="nav-link {{ request()->routeIs('admin.users') ? 'active' : '' }}">
                     مدیریت کاربران
                 </a>
-                {{-- فعلا ادرس غلط می دهیم بعدا اضافه کنیم--}}
-                <a href="{{ route('admin.dashboard') }}"
-                   class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                <a href="{{ route('admin.users.create') }}"
+                   class="nav-link {{ request()->routeIs('admin.users.create') ? 'active' : '' }}">
                     ساخت کاربر جدید
+                </a>
+                <a href="{{ route('admin.users.deleted_users') }}"
+                   class="nav-link {{ request()->routeIs('admin.users.deleted_users') ? 'active' : '' }}">
+                    کاربران حذف شده
                 </a>
             @endcan
 
