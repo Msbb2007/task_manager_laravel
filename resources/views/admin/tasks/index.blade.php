@@ -45,7 +45,17 @@
                                         {{ $task->priority }}
                                     </span>
                                 </td>
-                                <td>{{ $task->status }}</td>
+                                <td>
+                                    <span class="status-badge {{ $task->status }}">
+                                           @if($task->status=='in_progress')
+                                                 {{'در حال انجام'}}
+                                           @elseif($task->status=='pending')
+                                                 {{'در انتظار'}}
+                                           @else
+                                                 {{'تکمیل شده'}}
+                                            @endif
+                                    </span>
+                                </td>
                                 <td>{{ $task->due_date }}</td>
                                 <td>
                                     <a href="{{ route('admin.tasks.edit', $task->id) }}" class="btn btn-sm btn-warning">ویرایش</a>
