@@ -1,0 +1,268 @@
+/* استایل‌های عمومی کاربر */
+.user-container {
+    padding: 25px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.page-header {
+    margin-bottom: 30px;
+    border-bottom: 2px solid #f4f6f9;
+    padding-bottom: 15px;
+}
+
+.text-muted {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+/* استایل جدول */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-table th, .admin-table td {
+    padding: 16px;
+    text-align: right;
+    border-bottom: 1px solid #eee;
+}
+
+.admin-table th {
+    background-color: #f8f9fa;
+    color: #2c3e50;
+}
+
+/* نشانگرهای رنگی (Badges) */
+.category-badge {
+    padding: 4px 10px;
+    background: #f0f2f5;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.status-badge.completed { background: #d4edda; color: #155724; }
+.status-badge.pending { background: #fff3cd; color: #856404; }
+
+/* دکمه‌های عملیات */
+.btn-assign-new {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-assign-new:hover { background-color: #218838; color: white; }
+
+/* استایل فرم تخصیص */
+.assign-form {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.custom-select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.btn-submit {
+    flex: 2;
+    padding: 12px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-cancel {
+    flex: 1;
+    text-align: center;
+    padding: 12px;
+    background: #e9ecef;
+    color: #495057;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.btn-submit:hover { background: #0056b3; }
+
+/* استایل دکمه انتصاب */
+.btn-assign {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+}
+
+.btn-assign:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+/*دکمه بازگشت*/
+.btn-back {
+    display: inline-block;
+    color: #6c757d;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+.btn-back:hover {
+    color: #343a40;
+}
+
+.btn-detach {
+    background: none;
+    border: 1px solid #dc3545;
+    color: #dc3545;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+.btn-detach:hover {
+    background: #dc3545;
+    color: white;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.alert-success {
+    background-color: #ccf6ce;
+    color: #39b80d;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.alert-danger ul {
+    margin: 0;
+    padding-right: 20px;
+}
+
+/* استایل برای فیلدهای غیرقابل ویرایش */
+.disabled-input {
+    background-color: #f5f6fa !important;
+    color: #7f8c8d;
+    cursor: not-allowed;
+    border: 1px solid #dcdde1;
+}
+
+/* استایل برای Select */
+.select-custom {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dcdde1;
+    border-radius: 8px;
+    background-color: white;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.select-custom:focus {
+    border-color: #3498db;
+}
+
+.help-text {
+    display: block;
+    font-size: 0.75rem;
+    color: #95a5a6;
+    margin-top: 5px;
+}
+
+.role-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.role-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.role-badge.admin { background: #601010; color: #ffffff; }
+.role-badge.editor { background: #0c345b; color: #ffffff; }
+
+.btn-delete {
+    flex: 2;
+    padding: 12px;
+    background: #ea0520;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-delete:hover{
+    background: #d20a23;
+}
+
+.btn-hard-delete{
+    flex: 2;
+    padding: 12px;
+    background: #fb354c;
+    color: white;
+    border: #4b0600;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-hard-delete:hover{
+    background: #c6051c;
+}
