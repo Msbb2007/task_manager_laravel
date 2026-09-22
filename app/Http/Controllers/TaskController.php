@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\taskRequest;
 use App\Models\category;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 use App\Models\Task;
 
@@ -60,9 +61,30 @@ class TaskController extends Controller
         return redirect()->route('admin.tasks')->with('success', 'تسک با موفقیت به‌روزرسانی شد');
     }
 
-    public function destroy(Task $task)
+    public function trash()
     {
+        $tasks = Task::onlyTrashed()->get();
+        return view('admin.tasks.trash', compact('tasks'));
+    }
+
+    public function softDelete(string $id)
+    {
+        $task = Task::query()->findOrFail($id);
         $task->delete();
-        return redirect()->route('admin.tasks')->with('success', 'تسک با موفقیت حذف شد');
+        return redirect()->route('admin.tasks.trash')->with('success', 'تسک به سطل زباله منتقل شد.');
+    }
+
+    public function restore(string $id)
+    {
+        $task = Task::onlyTrashed()->findOrFail($id);
+        $task->restore();
+        return redirect()->route('admin.tasks.trash')->with('success', 'تسک با موفقیت بازیابی شد.');
+    }
+
+    public function forceDelete(string $id)
+    {
+        $task = Task::onlyTrashed()->findOrFail($id);
+        $task->forceDelete();
+        return redirect()->route('admin.tasks.trash')->with('success', 'تسک برای همیشه حذف شد.');
     }
 }
