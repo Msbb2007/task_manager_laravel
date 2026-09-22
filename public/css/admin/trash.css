@@ -1,0 +1,69 @@
+.trash-container {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.table-trash {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* حالت نیمه‌شفاف برای تسک‌های حذف شده */
+.task-is-deleted {
+    opacity: 0.6;
+    background-color: #fdf2f2; /* یک قرمز خیلی ملایم */
+    text-decoration: line-through; /* خط کشیدن روی متن */
+    color: #6c757d;
+}
+
+.trash-header {
+    color: #dc3545; /* قرمز برای تاکید بر حذف شده بودن */
+    font-weight: bold;
+    border-bottom: 2px solid #dc3545;
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+.btn-restore {
+    background-color: #198754;
+    color: white;
+}
+.btn-restore:hover {
+    background-color: #157347;
+    color: white;
+}
+
+.btn-force-delete {
+    background-color: #dc3545;
+    color: white;
+}
+.btn-force-delete:hover {
+    background-color: #a71d2a;
+    color: white;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.alert-success {
+    background-color: #ccf6ce;
+    color: #39b80d;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.alert-danger ul {
+    margin: 0;
+    padding-right: 20px;
+}
