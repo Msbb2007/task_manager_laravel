@@ -39,7 +39,7 @@
                         <!-- وضعیت -->
                         <div class="col-md-4 mb-3">
                             <label class="form-label">وضعیت</label>
-                            <select name="status" class="form-control">
+                            <select name="status" class="form-control  @error('status') is-invalid @enderror">
                                 <option value="pending">در انتظار</option>
                                 <option value="in_progress">در حال انجام</option>
                                 <option value="completed">تکمیل شده</option>
@@ -49,7 +49,7 @@
                         <!-- اولویت -->
                         <div class="col-md-4 mb-3">
                             <label class="form-label">اولویت</label>
-                            <select name="priority" class="form-control">
+                            <select name="priority" class="form-control @error('priority') is-invalid @enderror">
                                 <option value="low">کم</option>
                                 <option value="medium">متوسط</option>
                                 <option value="high">زیاد</option>
@@ -59,7 +59,7 @@
                         <!-- تاریخ -->
                         <div class="col-md-4 mb-3">
                             <label class="form-label">تاریخ انجام</label>
-                            <input type="date" name="due_date" class="form-control" value="{{ old('due_date') }}">
+                            <input type="date" name="due_date" class="form-control @error('due_date') is-invalid @enderror" value="{{ old('due_date') }}">
                         </div>
 
                         <!-- توضیحات -->
