@@ -20,7 +20,7 @@ class CheckRole
         }
 
         // چک کردن اینکه آیا نقش کاربر در لیست نقش‌های مجاز هست یا نه
-        if (! in_array($request->user()->role, $roles)) {
+        if(!($request->user()->isEditor())){
             abort(403, 'شما اجازه دسترسی به این بخش را ندارید.');
         }
         return $next($request);
