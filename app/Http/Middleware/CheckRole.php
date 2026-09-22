@@ -23,6 +23,10 @@ class CheckRole
         if(!($request->user()->isEditor())){
             abort(403, 'شما اجازه دسترسی به این بخش را ندارید.');
         }
+
+        if(!($request->user()->isAdmin())){
+            abort(403, 'شما اجازه دسترسی به این بخش را ندارید.');
+        }
         return $next($request);
     }
 }
