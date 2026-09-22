@@ -59,6 +59,13 @@
                                 <td>{{ $task->due_date }}</td>
                                 <td>
                                     <a href="{{ route('admin.tasks.edit', $task->id) }}" class="btn btn-sm btn-warning">ویرایش</a>
+                                    <form action="{{ route('admin.tasks.softDelete', $task->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn_warning" onclick="return confirm('آیا مطمئن هستید؟')">
+                                            حذف
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
