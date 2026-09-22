@@ -231,3 +231,35 @@ input[type="date"].input-custom {
     cursor: pointer;
 }
 
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.status-badge.completed { background: #80d298; color: #07220d; }
+.status-badge.pending { background: #bda368; color: #523e02; }
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.alert-success {
+    background-color: #ccf6ce;
+    color: #39b80d;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.alert-danger ul {
+    margin: 0;
+    padding-right: 20px;
+}
