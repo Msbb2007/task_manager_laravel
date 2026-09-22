@@ -25,6 +25,10 @@
                class="nav-link {{ request()->routeIs('admin.tasks') ? 'active' : '' }}">
                 مدیریت تسک ها
             </a>
+            <a href="{{ route('admin.tasks.trash') }}"
+               class="nav-link {{ request()->routeIs('admin.tasks.trash') ? 'active' : '' }}">
+                تسک های حذف شده
+            </a>
             <a href="{{ route('admin.categories') }}"
                class="nav-link {{ request()->routeIs('admin.categories') ? 'active' : '' }}">
                 دسته بندی ها
