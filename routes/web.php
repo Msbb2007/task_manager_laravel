@@ -32,7 +32,12 @@ Route::middleware('role')->prefix('/admin')->group(function() {
     Route::post('/tasks/create', [TaskController::class, 'store'])->name('admin.tasks.store');
     Route::get('/tasks/{task}/edit', [TaskController::class, 'edit'])->name('admin.tasks.edit');
     Route::put('/tasks/{task}/edit', [TaskController::class, 'update'])->name('admin.tasks.update');
-    Route::delete('/tasks/{task}/edit', [TaskController::class, 'destroy'])->name('admin.tasks.destroy');
+
+    //trash_tasks
+    Route::get('admin/tasks/trash', [TaskController::class, 'trash'])->name('admin.tasks.trash');
+    Route::post('admin/tasks/{id}/restore', [TaskController::class, 'restore'])->name('admin.tasks.restore');
+    Route::delete('admin/tasks/{id}/delete', [TaskController::class, 'softDelete'])->name('admin.tasks.softDelete');
+    Route::delete('admin/tasks/{id}/force-delete', [TaskController::class, 'forceDelete'])->name('admin.tasks.forceDelete');
 
     //categories
     Route::get('/categories', [CategoryController::class, 'index'])->name('admin.categories');
@@ -49,10 +54,9 @@ Route::middleware('role')->prefix('/admin')->group(function() {
     Route::post('/task_user/assign_task/{id}', [AssignController::class, 'store'])->name('admin.task_user.assignTask.store');
     Route::delete('task_user/detach/{id}', [AssignController::class, 'detach'])->name('admin.users.detach');
 
-
 });
     //دسترسی فقط برای admin
-    Route::middleware(['role:admin'])->group(function (){
+    Route::middleware(['role:admin'])->prefix('/admin')->group(function (){
         Route::get('/users', [UserController::class, 'index'])->name('admin.users');
         Route::get('/users/{user}/edit',[UserController::class,'edit'])->name('admin.users.edit');
         Route::put('/users/{user}',[UserController::class,'update'])->name('admin.users.update');
