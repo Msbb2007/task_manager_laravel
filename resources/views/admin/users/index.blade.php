@@ -13,6 +13,24 @@
             <p>در این بخش می‌توانید کاربران را مشاهده و به آن‌ها تسک اختصاص دهید.</p>
         </div>
 
+        <form action="{{ route('admin.task_user') }}" method="GET" class="d-flex gap-2 mb-3">
+            <input
+                type="search"
+                name="search"
+                class="form-control"
+                placeholder="جست‌وجو با نام یا ایمیل..."
+                value="{{ request('search') }}"
+            >
+
+            <button type="submit" class="btn btn-primary">جست‌وجو</button>
+
+            @if(request('search'))
+                <a href="{{ route('admin.task_user') }}" class="btn btn-outline-secondary">
+                    پاک‌کردن
+                </a>
+            @endif
+        </form>
+
         <div class="table-responsive">
             <table class="admin-table">
                 <thead>

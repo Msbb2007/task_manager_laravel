@@ -19,6 +19,24 @@
             </a>
         </div>
 
+        <form action="{{ route('admin.users') }}" method="GET" class="d-flex gap-2 mb-3">
+            <input
+                type="search"
+                name="search"
+                class="form-control"
+                placeholder="جست‌وجو با نام یا ایمیل..."
+                value="{{ request('search') }}"
+            >
+
+            <button type="submit" class="btn btn-primary">جست‌وجو</button>
+
+            @if(request('search'))
+                <a href="{{ route('admin.users') }}" class="btn btn-outline-secondary">
+                    پاک‌کردن
+                </a>
+            @endif
+        </form>
+
         <x-alert/>
 
         <div class="table-responsive">
