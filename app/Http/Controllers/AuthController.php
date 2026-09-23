@@ -26,7 +26,18 @@ class AuthController extends Controller
                 return redirect()->route('admin.dashboard');
             }
             else{
-                return view('user.dashboard');
+                $stats = [
+                    'total'      => $user->tasks()->count(),
+                    'completed'  => $user->tasks()->where('status', 'completed')->count(),
+                    'in_progress'    => $user->tasks()->where('status', 'in_progress')->count(),
+                    'high_priority'  => $user->tasks()->where('priority', 'high')->count(),
+                ];
+                $recentTasks = $user->tasks()
+                    ->latest()
+                    ->take(5)
+                    ->get();
+
+                return view('user.dashboard', compact('stats', 'recentTasks'));
             }
         }
         return redirect()->back()->with('message','رمز عبور یا ایمیل نادرست می باشد');
