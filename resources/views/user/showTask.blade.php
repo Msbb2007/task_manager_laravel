@@ -22,8 +22,12 @@
                         <div class="text-center mb-5">
                             <h1 class="fw-bold text-dark">{{ $task->title }}</h1>
                             <div class="d-flex justify-content-center gap-2 mt-2">
-                            <span class="badge {{ $task->is_completed ? 'bg-success' : 'bg-warning text-dark' }} px-3">
-                                {{ $task->is_completed ? 'تکمیل شده' : 'در جریان' }}
+                            <span class="badge @if($task->status == 'completed') bg-success @else bg-warning text-dark @endif px-3">
+                                @if($task->status == 'completed')
+                                    تکمیل شده
+                                @else
+                                    در جریان
+                                @endif
                             </div>
                         </div>
 
@@ -62,7 +66,13 @@
                                     </div>
                                     <div>
                                         <label class="text-muted small d-block">وضعیت نهایی:</label>
-                                        <span class="text-dark">{{ $task->is_completed ? '✅ انجام شد' : '⏳ در جریان' }}</span>
+                                        <span class="text-dark">
+                                            @if($task->status == 'completed')
+                                                ✅ تکمیل شد
+                                            @else
+                                                ⏳ در جریان
+                                            @endif
+                                        </span>
                                     </div>
                                 </div>
                             </div>
