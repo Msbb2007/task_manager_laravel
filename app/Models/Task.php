@@ -26,4 +26,11 @@ class Task extends Model
         return $this->belongsTo(Category::class);
     }
 
+    protected function casts(): array
+    {
+        return [
+            'due_date' => 'datetime',
+        ];
+    }
+
 }
