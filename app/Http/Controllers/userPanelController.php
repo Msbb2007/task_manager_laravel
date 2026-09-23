@@ -32,10 +32,20 @@ class userPanelController extends Controller
         return view('user.showTask', compact('task'));
     }
 
-    public function showAllTasks(Task $task)
+    public function showAllTasks(Task $task, Request $request)
     {
-        $user = auth()->user();
-        $tasks = $user->tasks()->with('category')->paginate(5);
+        $search = trim($request->input('search', ''));
+        $tasks = Task::query()
+            ->whereHas('users', fn ($query) => $query->where('users.id', auth()->id()))
+            ->when($search !== '', function ($query) use ($search) {
+                $query->where(function ($query) use ($search) {
+                    $query->where('title', 'like', "%{$search}%")
+                        ->orWhere('description', 'like', "%{$search}%");
+                });
+            })
+            ->latest()
+            ->paginate(10)
+            ->withQueryString();
         return view('user.showAllTasks', compact('tasks'));
     }
 
