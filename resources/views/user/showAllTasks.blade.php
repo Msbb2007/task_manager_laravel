@@ -4,6 +4,24 @@
 
 @section('content')
 
+    <form action="{{ route('user.tasks') }}" method="GET" class="d-flex gap-2 mb-3">
+        <input
+            type="search"
+            name="search"
+            class="form-control"
+            placeholder="جست‌وجو بین تسک‌ها..."
+            value="{{ request('search') }}"
+        >
+
+        <button type="submit" class="btn btn-primary">جست‌وجو</button>
+
+        @if(request('search'))
+            <a href="{{ route('user.tasks') }}" class="btn btn-outline-secondary">
+                پاک‌کردن
+            </a>
+        @endif
+    </form>
+
     <div class="card border-0 shadow-sm">
         <div class="card-body p-0">
             <div class="table-responsive">
@@ -11,6 +29,7 @@
                     <thead class="table-light">
                     <tr>
                         <th class="ps-4">عنوان تسک</th>
+                        <th>دسته بندی</th>
                         <th>اولویت</th>
                         <th>وضعیت</th>
                         <th class="text-center">عملیات</th>
@@ -22,6 +41,11 @@
                             <td class="ps-4">
                                 <div class="fw-bold">{{ $task->title }}</div>
                                 <small class="text-muted">{{ $task->created_at->format('Y/m/d') }}</small>
+                            </td>
+                            <td>
+                                    <span class="badge" style="background-color: {{ $task->category->color ?? '#6c757d' }};">
+                                        {{ $task->category->name }}
+                                    </span>
                             </td>
                             <td>
                                 @if($task->priority == 'high')
