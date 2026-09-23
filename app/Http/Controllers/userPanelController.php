@@ -27,8 +27,9 @@ class userPanelController extends Controller
         return view('user.dashboard', compact('stats', 'recentTasks'));
     }
 
-    public function showTask(Task $task)
+    public function showTask(string $taskId)
     {
+        $task = auth()->user()->tasks()->findOrFail($taskId);
         return view('user.showTask', compact('task'));
     }
 
