@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\userPanelController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -76,5 +77,10 @@ Route::middleware('role')->prefix('/admin')->group(function() {
 
 //user's panel
 Route::middleware('auth')->prefix('/user')->group(function(){
+    Route::get('/dashboard', [userPanelController::class, 'dashboard'])->name('user.dashboard');
+    Route::get('/tasks', [userPanelController::class, 'showAllTasks'])->name('user.tasks');
+    Route::get('/task/{task}', [userPanelController::class, 'showTask'])->name('user.task.show');
+    Route::get('/profile', [userPanelController::class, 'profile'])->name('user.profile');
+    Route::post('/profile/update', [userPanelController::class, 'updateProfile'])->name('user.profile.update');
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 });
