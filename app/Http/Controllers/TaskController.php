@@ -10,9 +10,19 @@ use App\Models\Task;
 
 class TaskController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $tasks = Task::with('category')->latest()->paginate(6);
+        $search = trim($request->input('search', ''));
+        $tasks = Task::query()
+            ->when($search !== '', function ($query) use ($search) {
+                $query->where(function ($query) use ($search) {
+                    $query->where('title', 'like', "%{$search}%")
+                        ->orWhere('description', 'like', "%{$search}%");
+                });
+            })
+            ->latest()
+            ->paginate(10)
+            ->withQueryString();
         return view('admin.tasks.index',compact('tasks'));
     }
 

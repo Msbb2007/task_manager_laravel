@@ -13,15 +13,37 @@ use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::query()->paginate(10);
+        $search = trim($request->input('search', ''));
+
+        $users = User::query()
+            ->when($search !== '', function ($query) use ($search) {
+                $query->where(function ($query) use ($search) {
+                    $query->where('name', 'like', "%{$search}%")
+                        ->orWhere('email', 'like', "%{$search}%");
+                });
+            })
+            ->latest()
+            ->paginate(10)
+            ->withQueryString();
         return view('admin.users.superAdmin.index', compact('users'));
     }
 
-    public function showUsers()
+    public function showUsers(Request $request)
     {
-        $users = User::query()->paginate(10);
+        $search = trim($request->input('search', ''));
+
+        $users = User::query()
+            ->when($search !== '', function ($query) use ($search) {
+                $query->where(function ($query) use ($search) {
+                    $query->where('name', 'like', "%{$search}%")
+                        ->orWhere('email', 'like', "%{$search}%");
+                });
+            })
+            ->latest()
+            ->paginate(10)
+            ->withQueryString();
         return view('admin.users.index', compact('users'));
     }
 
@@ -44,18 +66,29 @@ class UserController extends Controller
     }
 
 
-    public function showTasks($userId)
+    public function showTasks(Request $request,$userId)
     {
-        $user = User::query()->findOrFail($userId);
+        $user = User::findOrFail($userId);
 
-        // گرفتن تمام تسک‌هایی که این کاربر در حال حاضر به آن‌ها وصل است
-        $userTasks = $user->tasks()->with('category')->paginate(5);
+        $search = trim($request->input('search', ''));
+        $userTasks = Task::query()
+            ->whereHas('users', fn ($query) => $query->where('users.id', $user->id))
+            ->when($search !== '', function ($query) use ($search) {
+                $query->where(function ($query) use ($search) {
+                    $query->where('title', 'like', "%{$search}%")
+                        ->orWhere('description', 'like', "%{$search}%");
+                });
+            })
+            ->latest()
+            ->paginate(10)
+            ->withQueryString();
 
         return view('admin.users.tasks', compact('user', 'userTasks'));
     }
 
     public function edit(User $user)
     {
+            $user=auth()->user();
         return view('admin.users.superAdmin.edit', compact('user'));
     }
 
@@ -102,19 +135,20 @@ class UserController extends Controller
 
     public function editProfile(User $user)
     {
+        $user=auth()->user();
         return view('admin.users.superAdmin.editProfile', compact('user'));
     }
 
-    public function updateProfile(string $id, updateProfileRequest $request)
+    public function updateProfile( updateProfileRequest $request)
     {
-        $user = User::query()->findOrFail($id);
-        $data = $request->validate([
-            'email' => 'required|email|unique:users,email,' . $user->id,
-        ]);
+        $user = auth()->user();
+        $data = $request->validated();
+
         if ($request->filled('password')) {
-            $data['password'] =  Hash::make($request->password);
+            $data['password'] = Hash::make($request->password);
         }
 
+        // ذخیره سازی
         $user->update($data);
         return redirect()->route('admin.users')->with('success', 'اطلاعات شما آپدیت شد.');
     }
