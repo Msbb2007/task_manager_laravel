@@ -26,7 +26,7 @@ class AuthController extends Controller
                 return redirect()->route('admin.dashboard');
             }
             else{
-                return redirect()->route('');
+                return view('user.dashboard');
             }
         }
         return redirect()->back()->with('message','رمز عبور یا ایمیل نادرست می باشد');
