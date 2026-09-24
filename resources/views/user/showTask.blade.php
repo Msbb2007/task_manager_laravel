@@ -14,6 +14,22 @@
                     </a>
                 </div>
 
+                @if (session('success'))
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                @endif
+
+                @if (session('error'))
+                    <div class="alert alert-danger">{{ session('error') }}</div>
+                @endif
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            <div>{{ $error }}</div>
+                        @endforeach
+                    </div>
+                @endif
+
                 <!-- کارت نامه (Document Card) -->
                 <div class="card border-0 shadow-lg border-start border-4 @if($task->priority == 'high') border-danger @else border-primary @endif">
                     <div class="card-body p-5">
@@ -67,10 +83,28 @@
                                     <div>
                                         <label class="text-muted small d-block">وضعیت نهایی:</label>
                                         <span class="text-dark">
-                                            @if($task->status == 'completed')
-                                                ✅ تکمیل شد
+                                            @if($task->status == 'in_progress')
+                                                <form action="{{ route('user.tasks.status', $task) }}" method="POST">
+                                                     @csrf
+                                                    @method('PATCH')
+
+                                                    <select name="new_status" class="form-select form-select-sm" required>
+
+                                                     <option value="in_progress" @selected($task->pivot->state_of_this_task_user === 'in_progress')>⏳ در جریان</option>
+                                                     <option value="completed" @selected($task->pivot->state_of_this_task_user === 'completed')>✅ تکمیل شد</option>
+
+                                                    </select>
+
+                                                    <button type="submit" class="btn btn-sm btn-primary mt-1">
+                                                         تغییر وضعیت
+                                                    </button>
+                                                </form>
                                             @else
-                                                ⏳ در جریان
+                                                @if($task->pivot->state_of_this_task_user=='in_progress')
+                                                    انجام نیافت
+                                                @else
+                                                    ✅انجام یافته
+                                                @endif
                                             @endif
                                         </span>
                                     </div>
