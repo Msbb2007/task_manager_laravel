@@ -241,6 +241,9 @@ input[type="date"].input-custom {
 .status-badge.completed { background: #80d298; color: #07220d; }
 .status-badge.pending { background: #bda368; color: #523e02; }
 
+.statusOfThisUser-badge.completed { background: #80d298; color: #07220d; }
+.statusOfThisUser-badge.in_progress { background: #fd3d57; color: #601010; }
+
 .alert-danger {
     background-color: #f8d7da;
     color: #721c24;
