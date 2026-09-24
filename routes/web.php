@@ -82,5 +82,9 @@ Route::middleware('auth')->prefix('/user')->group(function(){
     Route::get('/task/{task}', [userPanelController::class, 'showTask'])->name('user.task.show');
     Route::get('/profile', [userPanelController::class, 'profile'])->name('user.profile');
     Route::post('/profile/update', [userPanelController::class, 'updateProfile'])->name('user.profile.update');
+    Route::patch('/user/tasks/{task}/status', [userPanelController::class, 'updateStatusOfTask'])->name('user.tasks.status');
+    Route::patch('/user/tasks/{task}/hide', [userPanelController::class, 'hideTask'])
+        ->name('user.tasks.hide');
+    Route::get('/tasks/archive', [userPanelController::class, 'archive'])->name('user.tasks.archive');
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 });
