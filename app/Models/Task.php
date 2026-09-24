@@ -18,7 +18,8 @@ class Task extends Model
     ];
 
     public function users(){
-        return $this->belongsToMany(User::class,'task_user');
+        return $this->belongsToMany(User::class,'task_user')->withPivot('state_of_this_task_user', 'is_hidden')
+        ->withTimestamps();
     }
 
     public function category()
