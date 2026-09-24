@@ -67,6 +67,9 @@
             <li class="{{ request()->routeIs('user.tasks') ? 'active' : '' }}">
                 <a href="{{ route('user.tasks') }}"><i class="fas fa-tasks me-2"></i> تسک‌های من</a>
             </li>
+            <li class="{{ request()->routeIs('user.tasks.archive') ? 'active' : '' }}">
+                <a href="{{ route('user.tasks.archive') }}"><i class="fas fa-tasks me-2"></i>تاریخچه تسک ها</a>
+            </li>
             <li class="{{ request()->routeIs('user.profile') ? 'active' : '' }}">
                 <a href="{{ route('user.profile') }}"><i class="fas fa-tasks me-2"></i> پروفایل</a>
             </li>
