@@ -81,7 +81,6 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-            $user=auth()->user();
         return view('admin.users.superAdmin.edit', compact('user'));
     }
 
@@ -90,6 +89,7 @@ class UserController extends Controller
         $user->update([
             'name' => $request->name,
             'family' => $request->family,
+            'role' => $request->role,
         ]);
         return redirect()->route('admin.users')->with('success', 'اطلاعات کاربر آپدیت شد.');
     }
