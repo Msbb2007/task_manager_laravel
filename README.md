@@ -7,7 +7,7 @@ A professional and robust Task Management System built with Laravel, designed to
 <h2>Technologies</h2>
 
 <p>
-PHP (Laravel Framework), MySQL, Bootstrap 5, Font Awesome, JavaScript, Blade Engine.
+PHP (Laravel Framework), MySQL, Bootstrap 5, Font Awesome, Blade Engine.
 </p>
 
 <h2>Core Features</h2>
@@ -49,16 +49,8 @@ The system utilizes a Many-to-Many relationship between <code>users</code> and <
 5. Run <code>php artisan serve</code> to start the local development server.
 </p>
 
-<code>http://localhost:8000</code>
-
-<h2>Screenshots</h2>
-
-<p><i>(Add your screenshots here by pointing to the correct paths)</i></p>
-
-<img src="./Screenshots/admin_dashboard.png" alt="Admin Dashboard" width="400">
-<img src="./Screenshots/user_tasks.png" alt="User Task List" width="400">
-<img src="./Screenshots/archive_page.png" alt="Archive Page" width="400">
+<code>http://localhost:8000/login</code>
 
 <h2>Made By</h2>
 
-<p>Ehsan</p>
+<p>MSB</p>
