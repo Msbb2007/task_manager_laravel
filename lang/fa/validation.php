@@ -31,6 +31,7 @@ return [
         'category_id' => 'دسته‌بندی',
         'priority' => 'اولویت',
         'due_date' => 'تاریخ انجام',
+        'new_status'=>'وضغیت جدید تسک'
     ],
 ];
 
