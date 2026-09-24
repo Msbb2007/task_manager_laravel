@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\updateProfileRequest;
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -33,22 +34,75 @@ class userPanelController extends Controller
         return view('user.showTask', compact('task'));
     }
 
-    public function showAllTasks(Task $task, Request $request)
+    public function updateStatusOfTask(Request $request, $taskId)
     {
+        $user = auth()->user();
+        $task = $user->tasks()->findOrFail($taskId);
+
+        if ($task->status !== 'in_progress') {
+            return back()->with('error', 'فقط تسک‌های در حال انجام قابل تغییر وضعیت هستند.');
+        }
+
+        $request->validate([
+            'new_status' => 'required|in:completed,in_progress'
+        ]);
+
+        $user->tasks()->updateExistingPivot($taskId, [
+            'state_of_this_task_user' => $request->new_status
+        ]);
+
+        return back()->with('success', 'وضعیت تسک با موفقیت تغییر کرد.');
+    }
+
+    public function hideTask($taskId)
+    {
+        $user = auth()->user();
+        $task = $user->tasks()->findOrFail($taskId);
+
+        if ($task->status!== 'completed') {
+            return back()->with('error', 'فقط تسک‌های تکمیل شده را می‌توان مخفی کرد.');
+        }
+
+        $user->tasks()->updateExistingPivot($taskId, [
+            'is_hidden' => true
+        ]);
+
+        return back()->with('success', 'تسک به تاریخچه منتقل شد.');
+    }
+
+    public function archive()
+    {
+        $user = auth()->user();
+
+        $archivedTasks = $user->tasks()
+            ->wherePivot('is_hidden', true)
+            ->latest('tasks.created_at')
+            ->paginate(10);
+
+        return view('user.archive', compact('archivedTasks'));
+    }
+
+
+    public function showAllTasks(Request $request)
+    {
+        $user = auth()->user();
+        $query = $user->tasks()->withPivot('is_hidden', 'state_of_this_task_user');
+
         $search = trim($request->input('search', ''));
-        $tasks = Task::query()
-            ->whereHas('users', fn ($query) => $query->where('users.id', auth()->id()))
-            ->when($search !== '', function ($query) use ($search) {
-                $query->where(function ($query) use ($search) {
-                    $query->where('title', 'like', "%{$search}%")
-                        ->orWhere('description', 'like', "%{$search}%");
-                });
-            })
-            ->latest()
-            ->paginate(10)
-            ->withQueryString();
+        if ($search !== '') {
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                    ->orWhere('description', 'like', "%{$search}%");
+            });
+        }
+        $query->wherePivot('is_hidden', false);
+
+        $tasks = $query->latest()->paginate(10)->withQueryString();
+
+
         return view('user.showAllTasks', compact('tasks'));
     }
+
 
     public function profile()
     {
