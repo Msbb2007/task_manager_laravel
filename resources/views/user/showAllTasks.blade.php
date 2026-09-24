@@ -72,6 +72,17 @@
                                         <i class="fas fa-eye"></i> مشاهده
                                     </a>
                                 @endif
+                                @if(($task->status == 'completed'))
+                                        @if(!$task->pivot->is_hidden)
+                                            <form action="{{ route('user.tasks.hide', $task) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button type="submit" class="btn btn-sm btn-outline-secondary" title="انتقال به آرشیو">
+                                                    <i class="fas fa-archive"></i> پنهان کردن
+                                                </button>
+                                            </form>
+                                        @endif
+                                @endif
                             </td>
                         </tr>
                     @empty
