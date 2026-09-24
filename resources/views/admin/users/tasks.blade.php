@@ -4,6 +4,7 @@
 
 @push('styles')
     <link rel="stylesheet" href="{{ asset('css/admin/users.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin/tasks.css') }}">
 @endpush
 
 @section('content')
@@ -23,25 +24,6 @@
                 <i class="fas fa-plus-circle"></i> تخصیص تسک جدید
             </a>
         </div>
-
-        <form action="{{ route('admin.task_user.showTasks',$user->id) }}" method="GET" class="d-flex gap-2 mb-3">
-            <input
-                type="search"
-                name="search"
-                class="form-control"
-                placeholder="جست‌وجو با عنوان یا توضیخات تسک..."
-                value="{{ request('search') }}"
-            >
-
-            <button type="submit" class="btn btn-primary">جست‌وجو</button>
-
-            @if(request('search'))
-                <a href="{{ route('admin.task_user.showTasks',$user->id) }}" class="btn btn-outline-secondary">
-                    پاک‌کردن
-                </a>
-            @endif
-        </form>
-
         <x-alert/>
 
         <div class="table-responsive">
@@ -51,6 +33,7 @@
                     <th>عنوان تسک</th>
                     <th>دسته بندی</th>
                     <th>وضعیت</th>
+                    <th> وضعیت تسک کاربر</th>
                     <th>عملیات</th>
                 </tr>
                 </thead>
@@ -74,6 +57,17 @@
                             @endif
                         </span>
                         </td>
+
+                        <td>
+                        <span class="statusOfThisUser-badge {{ $task->pivot->state_of_this_task_user}}">
+                            @if($task->pivot->state_of_this_task_user=='in_progress')
+                                {{'انجام نیافته'}}
+                            @else
+                                {{'انجام یافت'}}
+                            @endif
+                        </span>
+                        </td>
+
                         <td>
                             <form action="{{ route('admin.users.detach', $user->id) }}" method="POST" onsubmit="return confirm('آیا از قطع ارتباط این تسک با کاربر مطمئن هستید؟')">
                                 @csrf
