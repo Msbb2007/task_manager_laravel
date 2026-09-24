@@ -41,7 +41,7 @@
                             <span class="badge @if($task->status == 'completed') bg-success @else bg-warning text-dark @endif px-3">
                                 @if($task->status == 'completed')
                                     تکمیل شده
-                                @else
+                                @elseif($task->status == 'in_progress')
                                     در جریان
                                 @endif
                             </div>
