@@ -1,58 +1,64 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<h1>Task Management System (Laravel)</h1>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+<p>
+A professional and robust Task Management System built with Laravel, designed to manage complex user-task relationships with personalized task states and archiving capabilities.
 </p>
 
-## About Laravel
+<h2>Technologies</h2>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<p>
+PHP (Laravel Framework), MySQL, Bootstrap 5, Font Awesome, JavaScript, Blade Engine.
+</p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<h2>Core Features</h2>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<h3>User Features</h3>
+<p>
+- View assigned tasks with personalized status (e.g., in-progress).<br>
+- Archive tasks using the <code>is_hidden</code> mechanism to declutter the main list.<br>
+- Access a dedicated Archive page to view previously hidden tasks.
+</p>
 
-## Learning Laravel
+<h3>Admin Features</h3>
+<p>
+- Full Dashboard with statistics.<br>
+- User Management (CRUD with Soft Delete/Restore capabilities).<br>
+- Task Assignment & Detachment (managing Many-to-Many relationships).<br>
+- Advanced control over user-specific task visibility.
+</p>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<h2>Database Architecture</h2>
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+<p>
+The system utilizes a Many-to-Many relationship between <code>users</code> and <code>tasks</code> via a pivot table <code>task_user</code>.
+</p>
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+<code>
+// Key Pivot Columns:
+- state_of_this_task_user: Stores the unique status for each user-task pair.<br>
+- is_hidden: A boolean flag to archive tasks per user without deleting them from the database.
+</code>
 
-## Agentic Development
+<h2>Run Project</h2>
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+<p>
+1. Clone the repository into your local environment.<br>
+2. Run <code>composer install</code> to install dependencies.<br>
+3. Configure your <code>.env</code> file with your database credentials.<br>
+4. Run <code>php artisan migrate</code> to set up the database.<br>
+5. Run <code>php artisan serve</code> to start the local development server.
+</p>
 
-```bash
-composer require laravel/boost --dev
+<code>http://localhost:8000</code>
 
-php artisan boost:install
-```
+<h2>Screenshots</h2>
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+<p><i>(Add your screenshots here by pointing to the correct paths)</i></p>
 
-## Contributing
+<img src="./Screenshots/admin_dashboard.png" alt="Admin Dashboard" width="400">
+<img src="./Screenshots/user_tasks.png" alt="User Task List" width="400">
+<img src="./Screenshots/archive_page.png" alt="Archive Page" width="400">
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+<h2>Made By</h2>
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<p>Ehsan</p>
