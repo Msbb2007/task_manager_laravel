@@ -22,7 +22,7 @@ Route::middleware('guest')->group(function () {
 });
 
 //admin's panel
-Route::middleware('role')->prefix('/admin')->group(function() {
+Route::middleware('role:admin,editor')->prefix('/admin')->group(function() {
 
     //dashboard
     Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
@@ -76,7 +76,7 @@ Route::middleware('role')->prefix('/admin')->group(function() {
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 //user's panel
-Route::middleware('auth')->prefix('/user')->group(function(){
+Route::middleware('role:user')->prefix('/user')->group(function(){
     Route::get('/dashboard', [userPanelController::class, 'dashboard'])->name('user.dashboard');
     Route::get('/tasks', [userPanelController::class, 'showAllTasks'])->name('user.tasks');
     Route::get('/task/{task}', [userPanelController::class, 'showTask'])->name('user.task.show');

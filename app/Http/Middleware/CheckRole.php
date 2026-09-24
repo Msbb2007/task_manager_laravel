@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class CheckRole
@@ -19,13 +20,8 @@ class CheckRole
             return redirect()->route('login');
         }
 
-        // چک کردن اینکه آیا نقش کاربر در لیست نقش‌های مجاز هست یا نه
-        if(!($request->user()->isEditor())){
-            abort(403, 'شما اجازه دسترسی به این بخش را ندارید.');
-        }
-
-        if(!($request->user()->isAdmin())){
-            abort(403, 'شما اجازه دسترسی به این بخش را ندارید.');
+        if (!in_array(Auth::user()->role, $roles)) {
+            return abort(403, 'شما اجازه دسترسی به این بخش را ندارید.');
         }
         return $next($request);
     }
