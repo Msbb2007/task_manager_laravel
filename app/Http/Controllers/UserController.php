@@ -70,15 +70,8 @@ class UserController extends Controller
     {
         $user = User::findOrFail($userId);
 
-        $search = trim($request->input('search', ''));
-        $userTasks = Task::query()
-            ->whereHas('users', fn ($query) => $query->where('users.id', $user->id))
-            ->when($search !== '', function ($query) use ($search) {
-                $query->where(function ($query) use ($search) {
-                    $query->where('title', 'like', "%{$search}%")
-                        ->orWhere('description', 'like', "%{$search}%");
-                });
-            })
+        $userTasks = $user->tasks()
+            ->withPivot('state_of_this_task_user')
             ->latest()
             ->paginate(10)
             ->withQueryString();
