@@ -7,7 +7,7 @@ A professional and robust Task Management System built with Laravel, designed to
 <h2>Technologies</h2>
 
 <p>
-PHP (Laravel Framework), MySQL, Bootstrap 5, Font Awesome, Blade Engine.
+PHP (Laravel Framework), MySQL, Bootstrap 5, Font Awesome, JavaScript, Blade Engine.
 </p>
 
 <h2>Core Features</h2>
@@ -49,8 +49,23 @@ The system utilizes a Many-to-Many relationship between <code>users</code> and <
 5. Run <code>php artisan serve</code> to start the local development server.
 </p>
 
-<code>http://localhost:8000/login</code>
+<code>http://localhost:8000</code>
+
+<h2>Screenshots</h2>
+
+<img src="./Screenshots/Screenshot (124).png" alt="Calculator Screenshot" width="400">
+
+<img src="./Screenshots/Screenshot (125).png" alt="Calculator Screenshot" width="400">
+<img src="./Screenshots/Screenshot (126).png" alt="Calculator Screenshot" width="400">
+<img src="./Screenshots/Screenshot (127).png" alt="Calculator Screenshot" width="400">
+<img src="./Screenshots/Screenshot (128).png" alt="Calculator Screenshot" width="400">
+<img src="./Screenshots/Screenshot (130).png" alt="Calculator Screenshot" width="400">
+<img src="./Screenshots/Screenshot (131).png" alt="Calculator Screenshot" width="400">
+<img src="./Screenshots/Screenshot (132).png" alt="Calculator Screenshot" width="400">
+<img src="./Screenshots/Screenshot (133).png" alt="Calculator Screenshot" width="400">
+<img src="./Screenshots/Screenshot (134).png" alt="Calculator Screenshot" width="400">
+
 
 <h2>Made By</h2>
 
-<p>MSB</p>
+<p>Ehsan</p>
