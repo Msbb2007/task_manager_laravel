@@ -49,18 +49,6 @@ The system utilizes a Many-to-Many relationship between <code>users</code> and <
 5. Run <code>php artisan serve</code> to start the local development server.
 </p>
 
-<img src="./Screenshots/Screenshot (124).png" alt="Calculator Screenshot" width="400">
-
-<img src="./Screenshots/Screenshot (125).png" alt="Calculator Screenshot" width="400">
-<img src="./Screenshots/Screenshot (126).png" alt="Calculator Screenshot" width="400">
-<img src="./Screenshots/Screenshot (127).png" alt="Calculator Screenshot" width="400">
-<img src="./Screenshots/Screenshot (128).png" alt="Calculator Screenshot" width="400">
-<img src="./Screenshots/Screenshot (130).png" alt="Calculator Screenshot" width="400">
-<img src="./Screenshots/Screenshot (131).png" alt="Calculator Screenshot" width="400">
-<img src="./Screenshots/Screenshot (132).png" alt="Calculator Screenshot" width="400">
-<img src="./Screenshots/Screenshot (133).png" alt="Calculator Screenshot" width="400">
-<img src="./Screenshots/Screenshot (134).png" alt="Calculator Screenshot" width="400">
-
 
 <img src="./Screenshots/Screenshot (124).png" alt="Calculator Screenshot" width="400">
 
@@ -77,4 +65,4 @@ The system utilizes a Many-to-Many relationship between <code>users</code> and <
 
 <h2>Made By</h2>
 
-<p>Ehsan</p>
+<p>MSB</p>
