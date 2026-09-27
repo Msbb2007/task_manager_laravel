@@ -49,10 +49,6 @@ The system utilizes a Many-to-Many relationship between <code>users</code> and <
 5. Run <code>php artisan serve</code> to start the local development server.
 </p>
 
-<code>http://localhost:8000</code>
-
-<h2>Screenshots</h2>
-
 <img src="./Screenshots/Screenshot (124).png" alt="Calculator Screenshot" width="400">
 
 <img src="./Screenshots/Screenshot (125).png" alt="Calculator Screenshot" width="400">
